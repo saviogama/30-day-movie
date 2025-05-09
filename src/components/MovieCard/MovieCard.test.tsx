@@ -13,6 +13,8 @@ const sampleMovie: Movie = {
   id: 1,
   title: 'Inception',
   poster_path: '/poster.jpg',
+  release_date: '2021-01-10',
+  overview: 'Overview description',
 };
 
 describe('<MovieCard />', () => {

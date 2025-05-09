@@ -15,8 +15,20 @@ vi.mock('../MovieCard/MovieCard', () => ({
 }));
 
 const sampleMovies: Movie[] = [
-  { id: 1, title: 'Inception', poster_path: '/1.jpg' },
-  { id: 2, title: 'Interstellar', poster_path: '/2.jpg' },
+  {
+    id: 1,
+    title: 'Inception',
+    poster_path: '/1.jpg',
+    release_date: '2021-01-10',
+    overview: 'Overview description',
+  },
+  {
+    id: 2,
+    title: 'Interstellar',
+    poster_path: '/2.jpg',
+    release_date: '2021-01-10',
+    overview: 'Overview description',
+  },
 ];
 
 describe('<MoviesBar />', () => {
