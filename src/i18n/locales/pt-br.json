@@ -1,0 +1,15 @@
+{
+  "title": "30 dias de filmes",
+  "description.p1": "Escolha 4 filmes que você já assistiu e curtiu.",
+  "description.p2": "Com base no seu gosto vamos criar uma lista com 30 filmes.",
+
+  "searchBar": {
+    "label": "Pesquise 4 filmes",
+    "placeholder": "Digite o nome de um filme"
+  },
+
+  "loading:": "Preparando a sua lista...",
+  "result": "Sua lista para os próximos 30 dias.",
+  "day": "Dia",
+  "export": "Exportar como PDF"
+}

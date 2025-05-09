@@ -1,0 +1,15 @@
+{
+  "title": "30 day movie",
+  "description.p1": "Choose 4 movies that you have already watched and enjoyed.",
+  "description.p2": "Based on your taste, we will create a list of 30 movies.",
+
+  "searchBar": {
+    "label": "Search for 4 movies",
+    "placeholder": "Type a movie name"
+  },
+
+  "loading": "Preparing your list...",
+  "result": "Here is your 30 day movie list.",
+  "day": "Day",
+  "export": "Export as PDF"
+}
