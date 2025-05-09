@@ -59,7 +59,7 @@ export default function Home() {
     <main className="flex flex-col items-center p-6 max-w-6xl mx-auto">
       <LanguageSwitcher />
 
-      {showInitialSection ? (
+      {!loading && showInitialSection ? (
         <section>
           <h1 className="text-3xl font-bold text-center mt-4 mb-6">
             {t('title')}
