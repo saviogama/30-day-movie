@@ -75,7 +75,7 @@ export default function Home() {
           <SearchBar />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8 justify-items-center">
             {searchResults.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} loading={loading} movie={movie} />
             ))}
           </div>
         </section>
@@ -100,7 +100,9 @@ export default function Home() {
                     {t('day')} {index + 1}
                   </span>
                   <MovieCard
+                    key={movie.id}
                     isSelectionLocked={recommendedMovies.length === 30}
+                    loading={loading}
                     movie={movie}
                   />
                 </div>
