@@ -18,6 +18,8 @@ export default function Home() {
 
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const [hasQuery, setHasQuery] = useState(false);
 
   const showInitialSection = recommendedMovies.length === 0;
 
@@ -60,35 +62,48 @@ export default function Home() {
       <LanguageSwitcher />
 
       {!loading && showInitialSection ? (
-        <section>
-          <h1 className="text-3xl font-bold text-center mt-4 mb-6">
+        <section className="w-full text-center mt-8">
+          <h1 className="text-4xl font-extrabold mb-4 text-rose-600">
             {t('title')}
           </h1>
-          <p className="md:text-lg text-sm text-center">
+          <p className="md:text-lg text-base max-w-xl mx-auto">
             {t('description.p1')}
           </p>
-          <p className="md:text-lg text-sm text-center">
+          <p className="md:text-base text-sm text-gray-500 max-w-xl mx-auto mt-1">
             {t('description.p2')}
           </p>
 
-          <MoviesBar />
-          <SearchBar />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8 justify-items-center">
+          <div className="mt-10">
+            <MoviesBar />
+            <SearchBar
+              query={query}
+              setQuery={setQuery}
+              setHasQuery={setHasQuery}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mt-10 justify-items-center">
             {searchResults.map((movie) => (
               <MovieCard key={movie.id} loading={loading} movie={movie} />
             ))}
           </div>
+          {hasQuery && searchResults.length === 0 && (
+            <p className="text-gray-500 text-sm mt-4">{t('noResults')}</p>
+          )}
         </section>
       ) : loading ? (
-        <p className="text-lg mt-10">{t('loading')}</p>
+        <div className="flex flex-col items-center justify-center mt-10 gap-2 animate-fade-in">
+          <div className="w-6 h-6 border-4 border-rose-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-lg text-rose-600">{t('loading')}</p>
+        </div>
       ) : (
         <section>
-          <h2 className="text-2xl font-semibold my-4 text-center">
+          <h2 className="text-2xl font-semibold mt-8 mb-4 text-center">
             {t('result')}
           </h2>
           <button
             onClick={() => exportPDF(recommendedMovies, i18n.language)}
-            className="px-4 py-2 mt-2 mb-6 bg-red-600 text-white rounded hover:bg-red-900 transition cursor-pointer"
+            className="px-4 py-2 mt-2 mb-6 bg-rose-600 text-white rounded hover:bg-rose-500 transition cursor-pointer"
           >
             {t('export')}
           </button>

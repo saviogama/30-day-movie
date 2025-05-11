@@ -1,15 +1,16 @@
 {
-  "title": "30 day movie",
-  "description.p1": "Choose 4 movies that you have already watched and enjoyed.",
-  "description.p2": "Based on your taste, we will create a list of 30 movies.",
+  "title": "30 Movies in 30 Days",
+  "description.p1": "Select 4 movies you like. We'll recommend 30 personalized movies — one for each day.",
+  "description.p2": "Preview. Export to PDF. Watch anywhere. Completely free.",
 
   "searchBar": {
-    "label": "Search for 4 movies",
+    "label": "Select 4 movies",
     "placeholder": "Type a movie name"
   },
 
+  "noResults": "No movies found.",
   "loading": "Preparing your list...",
-  "result": "Here is your 30 day movie list.",
+  "result": "Here is your 30 day movie list",
   "day": "Day",
   "export": "Export as PDF"
 }

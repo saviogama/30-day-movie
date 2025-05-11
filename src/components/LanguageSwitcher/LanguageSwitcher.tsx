@@ -16,7 +16,7 @@ export function LanguageSwitcher() {
   return (
     <button
       aria-label="Language switcher"
-      className="w-auto h-10 px-3 flex items-center gap-2 justify-center text-sm font-medium border border-gray-300 hover:bg-red-900 transition-colors cursor-pointer rounded"
+      className="w-auto h-10 px-3 flex items-center gap-2 justify-center text-sm font-medium border border-gray-300 hover:bg-rose-600 transition-colors cursor-pointer rounded"
       onClick={handleSwitch}
     >
       <span>{flag}</span>

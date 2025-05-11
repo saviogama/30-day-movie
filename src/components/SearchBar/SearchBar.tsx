@@ -1,14 +1,18 @@
 import debounce from 'lodash.debounce';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { searchMovies } from '../../services/tmdb';
 import { useMovieStore } from '../../store/movieStore';
 
-export function SearchBar() {
+type props = {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  setHasQuery: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export function SearchBar({ query, setQuery, setHasQuery }: props) {
   const { setSearchResults } = useMovieStore();
   const { t, i18n } = useTranslation();
-
-  const [query, setQuery] = useState('');
 
   const debouncedSearch = useMemo(() => {
     return debounce(async (text: string) => {
@@ -16,12 +20,14 @@ export function SearchBar() {
         const language = i18n.language === 'en' ? 'en-US' : i18n.language;
         const data = await searchMovies(text, language);
 
+        setHasQuery(true);
         setSearchResults(data);
       } else {
+        setHasQuery(false);
         setSearchResults([]);
       }
     }, 1200);
-  }, [i18n.language, setSearchResults]);
+  }, [i18n.language, setHasQuery, setSearchResults]);
 
   useEffect(() => {
     debouncedSearch(query);
@@ -33,7 +39,7 @@ export function SearchBar() {
 
   return (
     <div className="flex flex-col w-full max-w-4xl mx-auto">
-      <label className="mb-2 text-start">{t('searchBar.label')}</label>
+      <label className="mb-2 text-start text-lg">{t('searchBar.label')}</label>
       <input
         className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={(e) => setQuery(e.target.value)}

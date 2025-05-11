@@ -15,7 +15,7 @@ export function MoviesBar() {
       {placeholders.map((_, idx) => (
         <div
           role="presentation"
-          className="w-36 h-[13.5rem] border border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 text-sm"
+          className="w-40 md:w-44 h-70.5 md:h-80 border border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 text-sm"
           key={idx}
         />
       ))}
