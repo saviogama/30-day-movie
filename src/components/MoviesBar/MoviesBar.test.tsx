@@ -21,6 +21,7 @@ const sampleMovies: Movie[] = [
     poster_path: '/1.jpg',
     release_date: '2021-01-10',
     overview: 'Overview description',
+    vote_average: 9.1,
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const sampleMovies: Movie[] = [
     poster_path: '/2.jpg',
     release_date: '2021-01-10',
     overview: 'Overview description',
+    vote_average: 9.2,
   },
 ];
 
