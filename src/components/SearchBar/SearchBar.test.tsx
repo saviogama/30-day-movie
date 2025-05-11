@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import debounce from 'lodash.debounce';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   beforeEach,
@@ -40,11 +41,15 @@ vi.mock('../../store/movieStore', async () => {
 });
 
 const mockSetSelectedMovies = vi.fn();
+const mockSetQuery = vi.fn();
+const mockSetHasQuery = vi.fn();
 const mockMovies = [{ id: 1, title: 'Inception', poster_path: '/img1.jpg' }];
+let query = '';
 
 describe('<SearchBar />', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    query = '';
 
     (useTranslation as unknown as MockInstance).mockReturnValue({
       t: (key: string) => key,
@@ -58,8 +63,17 @@ describe('<SearchBar />', () => {
     });
   });
 
+  const renderSearchBar = () =>
+    render(
+      <SearchBar
+        query={query}
+        setQuery={mockSetQuery}
+        setHasQuery={mockSetHasQuery}
+      />
+    );
+
   it('should render label and input with translated text', () => {
-    render(<SearchBar />);
+    renderSearchBar();
 
     expect(screen.getByText('searchBar.label')).toBeInTheDocument();
     expect(
@@ -70,7 +84,20 @@ describe('<SearchBar />', () => {
   it('calls setSelectedMovies with search results after debounce when query length > 1', async () => {
     (searchMovies as unknown as MockInstance).mockResolvedValue(mockMovies);
 
-    render(<SearchBar />);
+    const TestWrapper = () => {
+      const [query, setQuery] = useState('');
+      return (
+        <SearchBar
+          query={query}
+          setQuery={(q) => {
+            setQuery(q);
+          }}
+          setHasQuery={mockSetHasQuery}
+        />
+      );
+    };
+
+    render(<TestWrapper />);
     const input = screen.getByRole('textbox');
     await userEvent.type(input, 'inception');
 
@@ -81,7 +108,7 @@ describe('<SearchBar />', () => {
   });
 
   it('clears results if query length <= 1', async () => {
-    render(<SearchBar />);
+    renderSearchBar();
     const input = screen.getByRole('textbox');
     await userEvent.type(input, 'a');
 
@@ -101,7 +128,7 @@ describe('<SearchBar />', () => {
 
     (debounce as unknown as MockInstance).mockImplementation(mockDebounce);
 
-    const { unmount } = render(<SearchBar />);
+    const { unmount } = renderSearchBar();
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'test');
 
