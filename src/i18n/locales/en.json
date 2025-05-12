@@ -9,6 +9,7 @@
   },
 
   "noResults": "No movies found.",
+  "searchLoading": "Searching movies...",
   "loading": "Preparing your list...",
   "result": "Here is your 30 day movie list",
   "day": "Day",

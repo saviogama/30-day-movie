@@ -24,7 +24,7 @@ export function MovieCard({
       className={`w-40 md:w-44 rounded-lg overflow-hidden cursor-pointer transition duration-300 shadow-md bg-zinc-900
         transform hover:scale-[1.03] hover:shadow-lg
         ${
-          isSelected
+          isSelected && !isSelectionLocked
             ? 'ring-2 ring-rose-600 border border-transparent'
             : 'border border-zinc-700'
         }

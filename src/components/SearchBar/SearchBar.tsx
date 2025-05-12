@@ -8,20 +8,29 @@ type props = {
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
   setHasQuery: React.Dispatch<React.SetStateAction<boolean>>;
+  setSearchLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export function SearchBar({ query, setQuery, setHasQuery }: props) {
+export function SearchBar({
+  query,
+  setQuery,
+  setHasQuery,
+  setSearchLoading,
+}: props) {
   const { setSearchResults } = useMovieStore();
   const { t, i18n } = useTranslation();
 
   const debouncedSearch = useMemo(() => {
     return debounce(async (text: string) => {
       if (text.length > 1) {
+        setSearchLoading(true);
+
         const language = i18n.language === 'en' ? 'en-US' : i18n.language;
         const data = await searchMovies(text, language);
 
         setHasQuery(true);
         setSearchResults(data);
+        setSearchLoading(false);
       } else {
         setHasQuery(false);
         setSearchResults([]);

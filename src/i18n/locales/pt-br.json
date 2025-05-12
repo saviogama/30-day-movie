@@ -9,7 +9,8 @@
   },
 
   "noResults": "Nenhum filme encontrado.",
-  "loading:": "Preparando a sua lista...",
+  "searchLoading": "Buscando filmes...",
+  "loading": "Preparando a sua lista...",
   "result": "Aqui está sua lista para os próximos 30 dias",
   "day": "Dia",
   "export": "Exportar como PDF"

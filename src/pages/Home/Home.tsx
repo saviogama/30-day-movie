@@ -17,6 +17,7 @@ export default function Home() {
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
+  const [searchLoading, setSearchLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [hasQuery, setHasQuery] = useState(false);
@@ -80,16 +81,26 @@ export default function Home() {
               query={query}
               setQuery={setQuery}
               setHasQuery={setHasQuery}
+              setSearchLoading={setSearchLoading}
             />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mt-10 justify-items-center">
-            {searchResults.map((movie) => (
-              <MovieCard key={movie.id} loading={loading} movie={movie} />
-            ))}
-          </div>
-          {hasQuery && searchResults.length === 0 && (
-            <p className="text-gray-500 text-sm mt-4">{t('noResults')}</p>
+          {searchLoading ? (
+            <div className="flex flex-col items-center justify-center mt-10 gap-2 animate-fade-in">
+              <div className="w-6 h-6 border-4 border-rose-600 border-t-transparent rounded-full animate-spin" />
+              <p className="text-lg text-rose-600">{t('searchLoading')}</p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mt-10 justify-items-center">
+                {searchResults.map((movie) => (
+                  <MovieCard key={movie.id} loading={loading} movie={movie} />
+                ))}
+              </div>
+              {hasQuery && searchResults.length === 0 && (
+                <p className="text-gray-500 text-sm mt-4">{t('noResults')}</p>
+              )}
+            </>
           )}
         </section>
       ) : loading ? (
