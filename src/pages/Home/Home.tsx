@@ -128,7 +128,7 @@ export default function Home() {
                   </span>
                   <MovieCard
                     key={movie.id}
-                    isSelectionLocked={recommendedMovies.length === 30}
+                    isSelectionLocked={recommendedMovies.length > 0}
                     loading={loading}
                     movie={movie}
                   />
