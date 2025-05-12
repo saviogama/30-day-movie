@@ -4,7 +4,7 @@ export async function getRecommendations(
   movieTitles: string[],
   language: string
 ): Promise<string[]> {
-  const { data } = await api.post('http://localhost:3001/api/recommendations', {
+  const { data } = await api.post('/recommendations', {
     movieTitles,
     language,
   });
