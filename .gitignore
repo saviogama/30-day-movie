@@ -26,3 +26,4 @@ coverage/*
 
 .vercel
 .env
+.env*

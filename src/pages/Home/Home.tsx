@@ -35,6 +35,7 @@ export default function Home() {
           titles,
           language
         );
+
         const fetchedMovies = (
           await Promise.all(
             recommendedTitles.map((title) =>
