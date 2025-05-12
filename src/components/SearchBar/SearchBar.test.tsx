@@ -43,6 +43,7 @@ vi.mock('../../store/movieStore', async () => {
 const mockSetSelectedMovies = vi.fn();
 const mockSetQuery = vi.fn();
 const mockSetHasQuery = vi.fn();
+const mockSetSearchLoading = vi.fn();
 const mockMovies = [{ id: 1, title: 'Inception', poster_path: '/img1.jpg' }];
 let query = '';
 
@@ -69,6 +70,7 @@ describe('<SearchBar />', () => {
         query={query}
         setQuery={mockSetQuery}
         setHasQuery={mockSetHasQuery}
+        setSearchLoading={mockSetSearchLoading}
       />
     );
 
@@ -93,6 +95,7 @@ describe('<SearchBar />', () => {
             setQuery(q);
           }}
           setHasQuery={mockSetHasQuery}
+          setSearchLoading={mockSetSearchLoading}
         />
       );
     };
