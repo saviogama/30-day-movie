@@ -11,7 +11,8 @@ export async function exportPDF(movies: Movie[], language: string) {
   const maxY = pageHeight - margin;
   const lineHeight = 5;
 
-  const title = language === 'pt-BR' ? '30 dias de filmes' : '30 day movie';
+  const title =
+    language === 'pt-BR' ? '30 Dias de Filmes' : '30 Movies in 30 Days';
   const dayLabel = language === 'pt-BR' ? 'Dia' : 'Day';
   const providerLabel =
     language === 'pt-BR' ? 'Onde assistir' : 'Where to watch';

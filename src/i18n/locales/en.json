@@ -15,7 +15,7 @@
   "hasErrorOnRecommendationsFetch": "Too many requests have been made in a short period of time. Please try again later.",
   "return": "Return to main page",
   "loading": "Preparing your list...",
-  "result": "Here is your 30 day movie list",
+  "result": "Here is your list for the next 30 days",
   "day": "Day",
   "export": "Export as PDF"
 }
