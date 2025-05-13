@@ -17,6 +17,7 @@ export default function Home() {
     if (
       shouldRenderSelectMoviesSection &&
       !isLoadingRecommendations &&
+      !hasErrorOnRecommendationsFetch &&
       !hasRecommendations
     ) {
       return (
