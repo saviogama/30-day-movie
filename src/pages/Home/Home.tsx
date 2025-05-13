@@ -8,12 +8,13 @@ export default function Home() {
     recommendedMovies,
     isLoadingRecommendations,
     hasErrorOnRecommendationsFetch,
+    hasRecommendations,
   } = useFetchRecommendations();
 
   const shouldRenderSelectMoviesSection = recommendedMovies.length === 0;
 
   const renderSection = () => {
-    if (shouldRenderSelectMoviesSection && !isLoadingRecommendations) {
+    if (shouldRenderSelectMoviesSection && !hasRecommendations) {
       return (
         <SelectMoviesSection
           isLoadingRecommendations={isLoadingRecommendations}
@@ -26,6 +27,7 @@ export default function Home() {
         recommendedMovies={recommendedMovies}
         isLoadingRecommendations={isLoadingRecommendations}
         hasErrorOnRecommendationsFetch={hasErrorOnRecommendationsFetch}
+        hasRecommendations={hasRecommendations}
       />
     );
   };

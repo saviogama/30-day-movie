@@ -9,19 +9,21 @@ type props = {
   recommendedMovies: Movie[];
   isLoadingRecommendations: boolean;
   hasErrorOnRecommendationsFetch: boolean;
+  hasRecommendations: boolean;
 };
 
 export function RecommendedMoviesSection({
   recommendedMovies,
   isLoadingRecommendations,
   hasErrorOnRecommendationsFetch,
+  hasRecommendations,
 }: props) {
   const { t, i18n } = useTranslation();
 
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const renderSection = () => {
-    if (isLoadingRecommendations && !hasErrorOnRecommendationsFetch) {
+    if (isLoadingRecommendations) {
       return <Loading message={t('loading')} />;
     }
 
@@ -41,11 +43,7 @@ export function RecommendedMoviesSection({
       );
     }
 
-    if (
-      !isLoadingRecommendations &&
-      !hasErrorOnRecommendationsFetch &&
-      recommendedMovies.length === 0
-    ) {
+    if (hasRecommendations && recommendedMovies.length === 0) {
       return (
         <div className="flex flex-col items-center justify-center mt-10 gap-2 animate-fade-in">
           <p className="text-lg text-rose-600">

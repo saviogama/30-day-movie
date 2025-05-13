@@ -10,6 +10,7 @@ export const useFetchRecommendations = () => {
   const { selectedMovies } = useMovieStore();
 
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
+  const [hasRecommendations, setHasRecommendations] = useState(false);
   const [isLoadingRecommendations, setIsLoadingRecommendations] =
     useState(false);
   const [hasErrorOnRecommendationsFetch, setHasErrorOnRecommendationsFetch] =
@@ -37,9 +38,12 @@ export const useFetchRecommendations = () => {
         ).filter(Boolean) as Movie[];
 
         setRecommendedMovies(fetchedMovies);
+        setHasRecommendations(true);
       } catch (err) {
         setHasErrorOnRecommendationsFetch(true);
         void err;
+      } finally {
+        setIsLoadingRecommendations(false);
       }
     };
 
@@ -53,5 +57,6 @@ export const useFetchRecommendations = () => {
     recommendedMovies,
     isLoadingRecommendations,
     hasErrorOnRecommendationsFetch,
+    hasRecommendations,
   };
 };
