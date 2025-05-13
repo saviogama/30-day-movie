@@ -47,6 +47,7 @@ describe('<RecommendedMoviesSection />', () => {
         recommendedMovies={[]}
         isLoadingRecommendations={true}
         hasErrorOnRecommendationsFetch={false}
+        hasRecommendations={false}
       />
     );
 
@@ -59,6 +60,7 @@ describe('<RecommendedMoviesSection />', () => {
         recommendedMovies={[]}
         isLoadingRecommendations={false}
         hasErrorOnRecommendationsFetch={true}
+        hasRecommendations={false}
       />
     );
 
@@ -73,6 +75,7 @@ describe('<RecommendedMoviesSection />', () => {
         recommendedMovies={mockMovies}
         isLoadingRecommendations={false}
         hasErrorOnRecommendationsFetch={false}
+        hasRecommendations={true}
       />
     );
 
@@ -89,6 +92,7 @@ describe('<RecommendedMoviesSection />', () => {
         recommendedMovies={mockMovies}
         isLoadingRecommendations={false}
         hasErrorOnRecommendationsFetch={false}
+        hasRecommendations={true}
       />
     );
 
