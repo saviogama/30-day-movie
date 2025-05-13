@@ -41,6 +41,26 @@ export function RecommendedMoviesSection({
       );
     }
 
+    if (
+      !isLoadingRecommendations &&
+      !hasErrorOnRecommendationsFetch &&
+      recommendedMovies.length === 0
+    ) {
+      return (
+        <div className="flex flex-col items-center justify-center mt-10 gap-2 animate-fade-in">
+          <p className="text-lg text-rose-600">
+            {t('hasErrorOnRecommendations')}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 mt-4 bg-rose-600 text-white rounded hover:bg-rose-500 transition cursor-pointer"
+          >
+            {t('return')}
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div>
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-center">

@@ -10,7 +10,8 @@
 
   "noResults": "Nenhum filme encontrado.",
   "searchLoading": "Buscando filmes...",
-  "hasErrorOnSearchedMoviesFetch": "Erro ao buscar filmes. Tente novamente.",
+  "hasErrorOnSearchedMoviesFetch": "Erro ao buscar filmes. Por favor, tente novamente.",
+  "hasErrorOnRecommendations": "Erro ao criar a lista de recomendações de filmes. Por favor, tente novamente.",
   "hasErrorOnRecommendationsFetch": "Muitas requisições foram feitas em um curto período de tempo. Tente novamente mais tarde.",
   "return": "Voltar para o início",
   "loading": "Preparando a sua lista...",
