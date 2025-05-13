@@ -40,10 +40,7 @@ vi.mock('../../store/movieStore', async () => {
   };
 });
 
-const mockSetSelectedMovies = vi.fn();
-const mockSetQuery = vi.fn();
-const mockSetHasQuery = vi.fn();
-const mockSetSearchLoading = vi.fn();
+const mockSetState = vi.fn();
 const mockMovies = [{ id: 1, title: 'Inception', poster_path: '/img1.jpg' }];
 let query = '';
 
@@ -60,7 +57,7 @@ describe('<SearchBar />', () => {
     (useMovieStore as unknown as MockInstance).mockReturnValue({
       selectedMovies: [],
       setSelectedMovies: vi.fn(),
-      setSearchResults: mockSetSelectedMovies,
+      setSearchResults: mockSetState,
     });
   });
 
@@ -68,9 +65,10 @@ describe('<SearchBar />', () => {
     render(
       <SearchBar
         query={query}
-        setQuery={mockSetQuery}
-        setHasQuery={mockSetHasQuery}
-        setSearchLoading={mockSetSearchLoading}
+        setHasErrorOnFetch={mockSetState}
+        setHasQuery={mockSetState}
+        setIsLoadingSearchedMovies={mockSetState}
+        setQuery={mockSetState}
       />
     );
 
@@ -91,11 +89,12 @@ describe('<SearchBar />', () => {
       return (
         <SearchBar
           query={query}
+          setHasErrorOnFetch={mockSetState}
+          setHasQuery={mockSetState}
+          setIsLoadingSearchedMovies={mockSetState}
           setQuery={(q) => {
             setQuery(q);
           }}
-          setHasQuery={mockSetHasQuery}
-          setSearchLoading={mockSetSearchLoading}
         />
       );
     };
@@ -106,7 +105,7 @@ describe('<SearchBar />', () => {
 
     await waitFor(() => {
       expect(searchMovies).toHaveBeenCalledWith('inception', 'pt-BR');
-      expect(mockSetSelectedMovies).toHaveBeenCalledWith(mockMovies);
+      expect(mockSetState).toHaveBeenCalledWith(mockMovies);
     });
   });
 
@@ -116,7 +115,7 @@ describe('<SearchBar />', () => {
     await userEvent.type(input, 'a');
 
     await waitFor(() => {
-      expect(mockSetSelectedMovies).toHaveBeenCalledWith([]);
+      expect(mockSetState).toHaveBeenCalledWith([]);
     });
   });
 

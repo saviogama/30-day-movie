@@ -10,6 +10,9 @@
 
   "noResults": "Nenhum filme encontrado.",
   "searchLoading": "Buscando filmes...",
+  "hasErrorOnSearchedMoviesFetch": "Erro ao buscar filmes. Tente novamente.",
+  "hasErrorOnRecommendationsFetch": "Muitas requisições foram feitas em um curto período de tempo. Tente novamente mais tarde.",
+  "return": "Voltar para o início",
   "loading": "Preparando a sua lista...",
   "result": "Aqui está sua lista para os próximos 30 dias",
   "day": "Dia",

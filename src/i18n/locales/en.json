@@ -10,6 +10,9 @@
 
   "noResults": "No movies found.",
   "searchLoading": "Searching movies...",
+  "hasErrorOnSearchedMoviesFetch": "Error when searching for movies. Try again.",
+  "hasErrorOnRecommendationsFetch": "Too many requests have been made in a short period of time. Please try again later.",
+  "return": "Return to main page",
   "loading": "Preparing your list...",
   "result": "Here is your 30 day movie list",
   "day": "Day",
