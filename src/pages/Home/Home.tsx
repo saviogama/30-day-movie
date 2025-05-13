@@ -14,7 +14,11 @@ export default function Home() {
   const shouldRenderSelectMoviesSection = recommendedMovies.length === 0;
 
   const renderSection = () => {
-    if (shouldRenderSelectMoviesSection && !hasRecommendations) {
+    if (
+      shouldRenderSelectMoviesSection &&
+      !isLoadingRecommendations &&
+      !hasRecommendations
+    ) {
       return (
         <SelectMoviesSection
           isLoadingRecommendations={isLoadingRecommendations}
