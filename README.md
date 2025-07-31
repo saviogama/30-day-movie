@@ -1,7 +1,8 @@
-# 30 Dias de Filmes
-Um app que recomenda 30 filmes com base em seu gosto pessoal.
+# 30 day movie
 
-## 🚀 Tecnologias
+A simple app that recommends 30 movies based on your personal taste. Created with the purpose of testing and studying integration with the OpenAI API and AI services.
+
+## Tech
 - [React 19](https://react.dev)
 - [Vite](https://vitejs.dev)
 - [TypeScript](https://www.typescriptlang.org)
@@ -10,29 +11,29 @@ Um app que recomenda 30 filmes com base em seu gosto pessoal.
 - [Vitest + Testing Library](https://vitest.dev)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 
-## 🔧 Scripts
+## Scripts
 ```bash
-# instalar dependências
+# install dependencies
 npm install
 
-# rodar localmente
+# run locally
 npm run dev
 
-# rodar testes
+# run tests
 npm run test
 
-# rodar testes com cobertura
+# run tests with coverage
 npm run test:ci
 ```
 
-## 🧪 CI/CD
-Este projeto usa GitHub Actions para:
+## CI/CD
+This project uses GitHub Actions for:
 
-- Testes automatizados
-- Geração de coverage
-- Deploy automático para a Vercel (somente na branch main)
+- Automated tests
+- Coverage generation
+- Automatic deploy to Vercel (only on the main branch)
 
-## 🌐 Deploy
-Acesse a versão online em:
+## Deploy
+Access the online version at:
 
 👉 https://30-day-movie.vercel.app
